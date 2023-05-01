@@ -8,6 +8,9 @@ const CourseInput = props => {
   const [isValid,setIsValid]=useState(true)
 
   const goalInputChangeHandler = event => {
+    if(event.target.value.trim().length > 0){
+      setIsValid(true)
+    }
     setEnteredValue(event.target.value);
   };
 
@@ -27,7 +30,8 @@ const CourseInput = props => {
       <div className="form-control">
         {/* style 속성 중 color 프로퍼티에 들어가는 값을 동적으로 설정 */}
         <label style={{color:!isValid?"red":"black"}}>Course Goal</label>
-        <input style={{borderColor:!isValid?"red":"black"}} type="text" onChange={goalInputChangeHandler} />
+        <input style={{borderColor:!isValid?"red":"#ccc",
+      backgroundColor:!isValid?"salmon":"transparent"}} type="text" onChange={goalInputChangeHandler} />
       </div>
       <Button type="submit">Add Goal</Button>
     </form>
